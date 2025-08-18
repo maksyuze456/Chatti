@@ -29,4 +29,14 @@ public class Comment {
     private String content;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+
+    public Comment(Post post, User user, String content, LocalDate createdAt, LocalDate updatedAt) {
+        this.post = post;
+        this.user = user;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
 }

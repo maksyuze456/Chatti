@@ -31,4 +31,10 @@ public class User {
 
     private String password;
 
+    public User(List<Post> posts, List<Comment> comments, String username, String password) {
+        this.posts = posts;
+        this.comments = comments;
+        this.username = username;
+        this.password = password;
+    }
 }

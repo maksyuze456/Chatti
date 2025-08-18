@@ -34,4 +34,14 @@ public class Post {
 
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+    public Post(User user,  List<Comment> comments, String title, String content, LocalDate createdAt, LocalDate updatedAt) {
+        this.user = user;
+        this.comments = comments;
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
 }
