@@ -3,7 +3,6 @@ package org.training.chatti.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.training.chatti.model.User;
 import org.training.chatti.service.UserService;
 
 import java.util.Map;
