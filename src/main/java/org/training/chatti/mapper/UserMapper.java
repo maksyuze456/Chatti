@@ -21,9 +21,7 @@ public class UserMapper {
         userWithPostsDto.setUsername(user.getUsername());
 
         List<PostDetailsDto> listOfPostsDto = user.getPosts().stream()
-                .map(post -> {
-                    return postMapper.findPostDetailsById(post.getId());
-                })
+                .map(post -> postMapper.findPostDetailsById(post.getId()))
                 .toList();
 
         userWithPostsDto.setPosts(listOfPostsDto);
