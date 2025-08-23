@@ -1,14 +1,18 @@
 package org.training.chatti.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.training.chatti.dto.PostDetailsDto;
-import org.training.chatti.model.Post;
+import org.training.chatti.service.PostService;
 
-@Mapper(componentModel = "spring")
-public interface PostMapper {
+@Component
+public class PostMapper {
 
-    @Mapping(target = "userId", source = "post.user.id")
-    PostDetailsDto postToPostDetailsDto(Post post);
+    @Autowired
+    PostService postService;
+
+    public PostDetailsDto findPostDetailsById(int postId) {
+        return postService.findPostDetailsById(postId);
+    }
 
 }

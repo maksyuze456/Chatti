@@ -7,11 +7,13 @@ import org.training.chatti.mapper.UserMapper;
 import org.training.chatti.model.User;
 import org.training.chatti.repository.UserRepository;
 
+
 @Service
 public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     UserMapper userMapper;
 

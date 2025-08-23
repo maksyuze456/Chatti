@@ -5,4 +5,6 @@ import org.training.chatti.model.Comment;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
+
+
 }

@@ -12,7 +12,6 @@ import org.training.chatti.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.List;
 
 @Component
 public class InitData implements CommandLineRunner {
