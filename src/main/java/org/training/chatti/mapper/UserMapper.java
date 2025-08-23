@@ -22,8 +22,7 @@ public class UserMapper {
 
         List<PostDetailsDto> listOfPostsDto = user.getPosts().stream()
                 .map(post -> {
-                    PostDetailsDto dto = postMapper.findPostDetailsById(post.getId());
-                    return dto;
+                    return postMapper.findPostDetailsById(post.getId());
                 })
                 .toList();
 
