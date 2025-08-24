@@ -1,18 +1,24 @@
 package org.training.chatti.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.training.chatti.dto.PostDetailsDto;
-import org.training.chatti.service.PostService;
+import org.training.chatti.dto.PostDto;
+import org.training.chatti.model.Post;
+
+import java.util.List;
 
 @Component
 public class PostMapper {
 
-    @Autowired
-    PostService postService;
 
-    public PostDetailsDto findPostDetailsById(int postId) {
-        return postService.findPostDetailsById(postId);
+
+    public PostDto entityToDto(Post post) {
+        return new PostDto(post.getId(), post.getUser().getId(), post.getTitle(), post.getContent(), post.getCreatedAt());
+    }
+
+    public List<PostDto> entityListToDtoList(List<Post> posts) {
+        return posts.stream()
+                .map(this::entityToDto)
+                .toList();
     }
 
 }
