@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.training.chatti.service.UserService;
 
-import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -14,10 +13,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping()
-    public ResponseEntity<?> getUserWithPostsByUsername(@RequestBody Map<String, String> body) {
-        String username = body.get("username");
-        return ResponseEntity.ok(userService.findUserWithPostsByUsername(username));
+    @GetMapping("/{username}")
+    public ResponseEntity<?> getUserWithPostsByUsername(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getUserDtoByUsername(username));
     }
 
 }

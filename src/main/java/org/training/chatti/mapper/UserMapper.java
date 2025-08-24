@@ -1,14 +1,16 @@
 package org.training.chatti.mapper;
 
-import org.mapstruct.Mapper;
-import org.training.chatti.dto.UserWithPostsDto;
+import org.springframework.stereotype.Component;
+import org.training.chatti.dto.UserDto;
 import org.training.chatti.model.User;
 
+@Component
+public class UserMapper {
 
-@Mapper(componentModel = "spring",uses = PostMapper.class)
-public interface UserMapper {
 
 
-    UserWithPostsDto userToUserWithPostsDto(User user);
+    public UserDto entityToDto(User user) {
+        return new UserDto(user.getId(), user.getUsername());
+    }
 
 }

@@ -12,7 +12,6 @@ import org.training.chatti.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.List;
 
 @Component
 public class InitData implements CommandLineRunner {
@@ -27,7 +26,7 @@ public class InitData implements CommandLineRunner {
     CommentRepository commentRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         User u1 = new User(Collections.emptyList(), Collections.emptyList(), "maksyuze456", "12345maksa");
         User u2 = new User(Collections.emptyList(), Collections.emptyList(), "gusemil654", "123gus");

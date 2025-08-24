@@ -1,14 +1,24 @@
 package org.training.chatti.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.training.chatti.dto.PostDetailsDto;
+import org.springframework.stereotype.Component;
+import org.training.chatti.dto.PostDto;
 import org.training.chatti.model.Post;
 
-@Mapper(componentModel = "spring")
-public interface PostMapper {
+import java.util.List;
 
-    @Mapping(target = "userId", source = "post.user.id")
-    PostDetailsDto postToPostDetailsDto(Post post);
+@Component
+public class PostMapper {
+
+
+
+    public PostDto entityToDto(Post post) {
+        return new PostDto(post.getId(), post.getUser().getId(), post.getTitle(), post.getContent(), post.getCreatedAt());
+    }
+
+    public List<PostDto> entityListToDtoList(List<Post> posts) {
+        return posts.stream()
+                .map(this::entityToDto)
+                .toList();
+    }
 
 }
