@@ -44,9 +44,11 @@ public class InitData implements CommandLineRunner {
 
         Comment c1 = new Comment(p1, u2, "Yo, where are you heading towards to?", LocalDate.now(), LocalDate.now());
         Comment c2 = new Comment(p2, u1, "You planning to travel to Sweden next?", LocalDate.now(), LocalDate.now());
+        Comment c3 = new Comment(p1, u3, "Try visiting Greece one day!", LocalDate.now(), LocalDate.now());
 
         commentRepository.save(c1);
         commentRepository.save(c2);
+        commentRepository.save(c3);
 
 
 
