@@ -1,11 +1,11 @@
 package org.training.chatti.controller;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.training.chatti.dto.PostRequestDto;
 import org.training.chatti.service.PostService;
 
 @RequestMapping("/posts")
@@ -19,6 +19,11 @@ public class PostController {
     @GetMapping("/{userId}")
     public ResponseEntity<?> getAllPostsByUserId(@PathVariable int userId) {
         return ResponseEntity.ok(postService.getAllPostsDtosByUserId(userId));
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addPostToUserByUserId(@RequestBody PostRequestDto postRequestDto) {
+        return new ResponseEntity<>(postService.addPostToUserByUserId(postRequestDto), HttpStatus.CREATED);
     }
 
 }

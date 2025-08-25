@@ -2,7 +2,8 @@ package org.training.chatti.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.training.chatti.dto.PostDto;
+import org.training.chatti.dto.PostRequestDto;
+import org.training.chatti.dto.PostResponseDto;
 import org.training.chatti.mapper.PostMapper;
 import org.training.chatti.model.Post;
 import org.training.chatti.repository.PostRepository;
@@ -23,9 +24,16 @@ public class PostService {
         return postRepository.findPostsByUserId(userId);
     }
 
-    public List<PostDto> getAllPostsDtosByUserId(int userId) {
+    public List<PostResponseDto> getAllPostsDtosByUserId(int userId) {
         List<Post> posts = getAllPostsByUserId(userId);
         return postMapper.entityListToDtoList(posts);
+    }
+
+    public PostResponseDto addPostToUserByUserId(PostRequestDto postRequestDto) {
+        Post postToAdd = postMapper.dtoToEntity(postRequestDto);
+        Post addedPost = postRepository.save(postToAdd);
+
+        return postMapper.entityToDto(addedPost);
     }
 
 }
