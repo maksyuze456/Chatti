@@ -36,4 +36,10 @@ public class PostService {
         return postMapper.entityToDto(addedPost);
     }
 
+    public PostResponseDto updatePost(PostResponseDto postResponseDto) {
+        Post updatedPost = postRepository.save(postMapper.dtoResponseToEntity(postResponseDto));
+        return postMapper.entityToDto(updatedPost);
+    }
+
+
 }

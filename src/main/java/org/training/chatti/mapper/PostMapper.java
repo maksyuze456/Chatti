@@ -28,4 +28,9 @@ public class PostMapper {
         return new Post(new User(postRequestDto.userId()), Collections.emptyList(), postRequestDto.title(), postRequestDto.content(), postRequestDto.createdAt(), null);
     }
 
+    public Post dtoResponseToEntity(PostResponseDto postResponseDto) {
+        return new Post(postResponseDto.id(), new User(postResponseDto.userId()), postResponseDto.title(), postResponseDto.content(), postResponseDto.createdAt());
+    }
+
+
 }

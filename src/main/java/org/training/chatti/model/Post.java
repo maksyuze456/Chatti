@@ -44,4 +44,12 @@ public class Post {
         this.updatedAt = updatedAt;
     }
 
+    public Post(int postId, User user, String title, String content, LocalDate createdAt) {
+        this.id = postId;
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
+
 }
