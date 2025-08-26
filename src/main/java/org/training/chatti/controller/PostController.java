@@ -1,5 +1,6 @@
 package org.training.chatti.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +29,26 @@ public class PostController {
 
     @PutMapping("/update")
     public ResponseEntity<?> updatePost(@RequestBody PostResponseDto postResponseDto) {
-        return new ResponseEntity<>(postService.updatePost(postResponseDto), HttpStatus.OK);
+
+        try{
+            PostResponseDto updatedPost = postService.updatePost(postResponseDto);
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>("Post does not exist, or does not belong to the given user", HttpStatus.BAD_REQUEST);
+        }
     }
 
-
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deletePost(@RequestParam("id") int id, @RequestParam("userId") int userId) {
+        try {
+            boolean deleted = postService.deletePost(id, userId);
+            if(deleted){
+                return new ResponseEntity<>("Deleted", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Failed to delete post", HttpStatus.BAD_REQUEST);
+            }
+        } catch(EntityNotFoundException e) {
+            return new ResponseEntity<>("Post with such id does not exists, or does not belong to a given user.", HttpStatus.NOT_FOUND);
+        }
+    }
 }
