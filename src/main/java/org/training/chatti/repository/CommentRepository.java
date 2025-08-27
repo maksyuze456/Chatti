@@ -10,4 +10,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     List<Comment> findCommentsByPostId(int postId);
 
+    boolean existsByIdAndUserId(int id, int userId);
+
 }
