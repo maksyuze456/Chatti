@@ -39,4 +39,11 @@ public class Comment {
         this.updatedAt = updatedAt;
     }
 
+    public Comment(Post post, User user, String content, LocalDate createdAt) {
+        this.post = post;
+        this.user = user;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
+
 }
